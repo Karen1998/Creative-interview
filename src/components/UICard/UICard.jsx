@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import {
   Avatar,
-  Box,
   Card,
   CardActions,
   CardContent,
@@ -103,35 +102,27 @@ const UICard = ({ attributes, relationships }) => {
 UICard.propTypes = {
   type: PropTypes.string,
   id: PropTypes.number,
-  attributes: PropTypes.objectOf(
-    PropTypes.shape({
-      title: PropTypes.string,
-      rooms: PropTypes.number,
-      area: PropTypes.number,
-      unit: PropTypes.string,
-      address: PropTypes.objectOf(
-        PropTypes.shape({
-          city: PropTypes.string,
-          street: PropTypes.string,
-          house: PropTypes.string,
-          room: PropTypes.string,
-        })
-      ),
-    })
-  ),
-  relationships: PropTypes.objectOf(
-    PropTypes.shape({
-      type: PropTypes.string,
-      id: PropTypes.number,
-      attributes: PropTypes.objectOf(
-        PropTypes.shape({
-          last_name: PropTypes.string,
-          first_name: PropTypes.string,
-          middle_name: PropTypes.string,
-        })
-      ),
-    })
-  ),
+  attributes: PropTypes.shape({
+    title: PropTypes.string,
+    rooms: PropTypes.number,
+    area: PropTypes.number,
+    unit: PropTypes.string,
+    address: PropTypes.shape({
+      city: PropTypes.string,
+      street: PropTypes.string,
+      house: PropTypes.string,
+      room: PropTypes.string,
+    }),
+  }),
+  relationships: PropTypes.shape({
+    type: PropTypes.string,
+    id: PropTypes.number,
+    attributes: PropTypes.shape({
+      last_name: PropTypes.string,
+      first_name: PropTypes.string,
+      middle_name: PropTypes.string,
+    }),
+  }),
 };
 
 export default UICard;
