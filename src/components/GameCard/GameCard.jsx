@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Box } from "@material-ui/core";
 
-const Card = ({ image, show, win, handleClick }) => {
+const GameCard = ({ image, show, win, handleClick }) => {
   return (
     <Box
       position="relative"
@@ -45,11 +45,11 @@ const Card = ({ image, show, win, handleClick }) => {
   );
 };
 
-Card.propTypes = {
+GameCard.propTypes = {
   image: PropTypes.string,
   show: PropTypes.bool,
   win: PropTypes.bool,
   handleClick: PropTypes.func,
 };
 
-export default Card;
+export default GameCard;

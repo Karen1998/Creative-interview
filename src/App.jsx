@@ -1,36 +1,31 @@
-import React, { useContext, useState } from "react";
-import { Box, Button, Container, Typography } from "@material-ui/core";
+import React from "react";
+import { Container } from "@material-ui/core";
+import { Route, Switch } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
-import CardsContainer from "./containers/Cards/CardsContainer";
-import { LeaderBoardContext } from "./services/Leaderboard";
-import LeaderBoard from "./containers/LeaderBoard/LeaderBoard";
+import { Routers } from "./Routes";
 
 const App = () => {
-  const [startGame, setStartGame] = useState(false);
-  const leaderBoardContext = useContext(LeaderBoardContext);
-
-  const handleStartNewGame = () => {
-    setStartGame(false);
-  };
-
   return (
     <Container>
-      {startGame ? (
-        <CardsContainer
-          startTime={new Date()}
-          handleStartNewGame={handleStartNewGame}
-        />
-      ) : (
-        <Button onClick={() => setStartGame(true)}>
-          Click me to start the game
-        </Button>
-      )}
+      <Switch>
+        {Routers.map(({ component, exact, path, redirect }) => {
+          if (redirect) {
+            return (
+              <Redirect
+                key={path}
+                to={redirect}
+                exact={exact}
+                component={component}
+              />
+            );
+          }
 
-      <Box mt={5}>
-        <Typography variant="h2">Leader Board</Typography>
-
-        <LeaderBoard leaderBoard={leaderBoardContext.state} />
-      </Box>
+          return (
+            <Route key={path} path={path} exact={exact} component={component} />
+          );
+        })}
+      </Switch>
     </Container>
   );
 };

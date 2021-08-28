@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Box, Grid } from "@material-ui/core";
 
 import { cards } from "src/store/entities";
-import Card from "src/components/Card/Card";
+import Card from "src/components/GameCard/GameCard";
 import { useDispatch } from "src/services/Leaderboard";
 import { addNewWinnerAction } from "src/services/Leaderboard";
 
@@ -18,7 +18,7 @@ const addPropertyToArray = (arr) => {
   }));
 };
 
-const CardsContainer = ({ startTime, handleStartNewGame }) => {
+const GameCardsContainer = ({ startTime, handleStartNewGame }) => {
   const [cardsState, setCardsState] = useState(() => addPropertyToArray(cards));
   const [disabledMouseEvents, setDisabledMouseEvents] = useState(false);
 
@@ -166,9 +166,9 @@ const CardsContainer = ({ startTime, handleStartNewGame }) => {
   );
 };
 
-CardsContainer.propTypes = {
+GameCardsContainer.propTypes = {
   startTime: PropTypes.object,
   handleStartNewGame: PropTypes.func,
 };
 
-export default CardsContainer;
+export default GameCardsContainer;

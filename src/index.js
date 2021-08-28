@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+
 import App from "./App";
 import "./vendor/reset.css";
 import "./vendor/global.css";
@@ -8,9 +10,11 @@ import LeaderboardProvider from "./services/Leaderboard";
 
 ReactDOM.render(
   <React.StrictMode>
-    <LeaderboardProvider>
-      <App />
-    </LeaderboardProvider>
+    <Router>
+      <LeaderboardProvider>
+        <App />
+      </LeaderboardProvider>
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );
